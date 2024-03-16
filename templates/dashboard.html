@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ heading }} Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h1>Dashboard for the {{ heading }}</h1>
+        <div class="user-info">
+            <div class="profile-picture">
+                <img src="{{ data.profile_picture.url }}" alt="Profile Picture">
+            </div>
+            <div class="user-details">
+                <p><strong>First Name:</strong> {{ data.first_name }}</p>
+                <p><strong>Last Name:</strong> {{ data.last_name }}</p>
+                <p><strong>Username:</strong> {{ data.username }}</p>
+                <p><strong>Email Id:</strong> {{ data.email }}</p>
+                <p><strong>Address:</strong> {{ data.address_line1 }}</p>
+                <p><strong>City:</strong> {{ data.city }}</p>
+                <p><strong>State:</strong> {{ data.state }}</p>
+                <p><strong>Pincode:</strong> {{ data.pincode }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
