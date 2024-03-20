@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Medical Blogs</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
 <body>
+  {% include 'navbar.html' %}
+    <header>
+        <h1>Welcome to Medical Blogs</h1>
+        <p>Explore a wealth of medical knowledge and insights from our diverse range of blog posts.</p>
+    </header>
 
-    {% include 'navbar.html' %}
-
-   
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            {{ message }}
-        </div>
-        {% endfor %}
-        {% endif %}
-
-
-    <h1>Signup and Login System for two different types of users</h1>
-
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Medical Blogs is your go-to destination for reliable and informative medical content. Our platform hosts a wide variety of blog posts covering topics such as health, wellness, diseases, treatments, and more.</p>
+            <p>Whether you're a healthcare professional, a student, or simply interested in learning more about medical science, you'll find valuable resources and expert insights right here.</p>
+            <p>Start exploring our collection of articles and empower yourself with the knowledge to make informed decisions about your health and well-being.</p>
+        </section>
+    </main>
 
 </body>
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <style>
+        
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select {
+    margin-bottom: 20px;
+}
+
+#blogList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#blogList li {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+#blogList img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#blogList h2 {
+    margin-top: 0;
+}
+
+#blogList p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#blogList p:last-child {
+    margin-bottom: 0;
+}
+
+ 
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.navbar .right {
+    float: right;
+}
+
+.heading{
+    text-align: center;
+}
+  
+
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h2 class="heading">All Blog Posts</h2>
+
+    
+    <label for="categorySelect">Select Category:</label>
+    <select id="categorySelect">
+        <option value="Mental Health">Mental Health</option>
+        <option value="Heart Disease">Heart Disease</option>
+        <option value="COVID-19">COVID-19</option>
+        <option value="Immunization">Immunization</option>
+    </select>
+
+    <ul id="blogList">
+        
+    </ul>
+
+    <script src="/static/js/populateBlogsDoc.js"></script>
+</body>
+</html>

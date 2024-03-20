@@ -2,9 +2,19 @@
     <a href="/">Home</a>
     <div class="right">
         {% if request.user.is_authenticated %}
-        <a>Welcome, {{ user.get_username }}</a>
+        
+        <a href="/dashboard">Welcome, {{ user.get_username }}</a>
+        
+        {% if request.session.heading == "Doctor" %}
+        <a href="/Doctor_blogs">Blogs</a>
+        <a href="/add_blog">Add blog</a>
+        {% elif request.session.heading == "Patient" %}
+        <a href="/Patient_blogs">Blogs</a>
+        {% endif %}
         <a href="/logout">Logout</a>
+       
         {% else %}
+        <a>Login to see blogs</a>
         <a href="/signup">Signup</a>
         <a href="/login">Login</a>
         {% endif %}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2; 
+            color: #fff; 
+        }
+
+        .form-container {
+            max-width: 800px; 
+            margin: 50px auto;
+            background-color: #333; 
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="file"],
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #555; 
+            color: #fff; 
+        }
+
+        .form-group .address-group input[type="text"] {
+            width: calc(50% - 5px);
+            margin-right: 10px;
+        }
+
+        .form-group .address-group input[type="text"]:last-child {
+            margin-right: 0;
+        }
+
+        /* Increase width of summary and content textareas */
+        .form-group textarea#summary,
+        .form-group textarea#content {
+            width: 100%;
+            max-width: calc(100% - 32px); /* Adjust the padding (2 * 16px) */
+        }
+
+        .form-group button {
+            background-color: #ff6600; 
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-right: 10px; /* Add space between buttons */
+        }
+
+        .form-group button:hover {
+            background-color: #ff8533; 
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .right {
+            float: right;
+        }
+
+        .alert {
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-warning {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        /* Close button styles */
+        .closebtn {
+            margin-left: 15px;
+            color: #721c24;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: #c00;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+   
+    <div class="form-container">
+        <h2 id= "heading">Create New Blog Post</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form action="#" method="POST" id="myForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label id="heading_title" for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="Mental Health">Mental Health</option>
+                    <option value="Heart Disease">Heart Disease</option>
+                    <option value="COVID-19">COVID-19</option>
+                    <option value="Immunization">Immunization</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="summary">Summary:</label><br>
+                <textarea id="summary" name="summary" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content:</label><br>
+                <textarea id="content" name="content" rows="10" required></textarea>
+            </div>
+
+            <div id="draft_check" class="form-group">
+
+                <input type="checkbox" id="draft" name="draft">
+                <label  for="draft">Save as Draft</label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+
+            <div class="form-group" id="parentElementId">
+                <!-- New button will be appended here -->
+            </div>
+
+        </form>
+        
+       
+    </div>
+
+  
+
+
+    <script src="/static/js/draft.js"></script>
+</body>
+</html>
